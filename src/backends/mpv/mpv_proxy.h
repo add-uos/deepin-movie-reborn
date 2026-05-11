@@ -420,6 +420,7 @@ private:
     void setState(PlayState state);
     qint64 nextBurstShootPoint();
     int volumeCorrection(int);
+    void checkAndSetFastProfile();
 
     //add by heyi
     QVariant my_get_property(mpv_handle *pHandle, const QString &sName) const;
@@ -495,6 +496,7 @@ private:
     mutable bool m_cachedPause {false};
     mutable bool m_cachedIdleActive {true};
     mutable bool m_cachedPausedForCache {false};
+    mutable double m_cachedFps {0.0};
 };
 
 }
