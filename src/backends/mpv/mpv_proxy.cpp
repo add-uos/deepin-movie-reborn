@@ -909,6 +909,7 @@ void MpvProxy::initPropertyCache(mpv_handle *pHandle)
     m_observeProperty(pHandle, 0, "dwidth", MPV_FORMAT_INT64);
     m_observeProperty(pHandle, 0, "dheight", MPV_FORMAT_INT64);
     m_observeProperty(pHandle, 0, "video-out-params/rotate", MPV_FORMAT_INT64);
+    m_observeProperty(pHandle, 0, "estimated-vf-fps", MPV_FORMAT_DOUBLE);
 
     qDebug() << "Property cache initialization completed";
 }
@@ -943,6 +944,8 @@ void MpvProxy::updatePropertyCache(const QString &name, const QVariant &value)
         m_cachedIdleActive = value.toBool();
     } else if (name == "paused-for-cache") {
         m_cachedPausedForCache = value.toBool();
+    } else if (name == "estimated-vf-fps") {
+        m_cachedFps = value.toDouble();
     }
 }
 
@@ -1175,6 +1178,8 @@ void MpvProxy::handle_mpv_events()
 #if MPV_CLIENT_API_VERSION < MPV_MAKE_VERSION(2,0)
         case MPV_EVENT_TRACKS_CHANGED:
             qInfo() << m_eventName(pEvent->event_id);
+            // Check for AMD 550 series + 4K 30+fps condition
+            checkAndSetFastProfile();
             // Delay to avoid synchronous API calls during event handling
             QTimer::singleShot(50, this, [this]() {
                 updatePlayingMovieInfo();
@@ -1185,13 +1190,15 @@ void MpvProxy::handle_mpv_events()
 
         case MPV_EVENT_FILE_LOADED: {
             qInfo() << m_eventName(pEvent->event_id);
-
+            
             // Note: hwdec-interop, video-codec, video-format logging removed to avoid synchronous API calls
 #if MPV_CLIENT_API_VERSION > MPV_MAKE_VERSION(2,0)
             // Delay to avoid synchronous API calls during event handling
             QTimer::singleShot(50, this, [this]() {
                 updatePlayingMovieInfo();
                 emit tracksChanged();
+                // Check for AMD 550 series + 4K 60fps condition
+                checkAndSetFastProfile();
             });
 #endif
 //            if (!m_bIsJingJia) {
@@ -1352,6 +1359,7 @@ void MpvProxy::processPropertyChange(const QString &name)
             if (!size.isEmpty())
                 emit videoSizeChanged();
             qInfo() << "update videoSize " << size;
+            checkAndSetFastProfile();
         });
     } else if (name == "aid") {
         emit aidChanged();
@@ -2614,6 +2622,40 @@ void MpvProxy::updatePlayingMovieInfo()
 
     qInfo() << m_movieInfo.subs;
     qInfo() << m_movieInfo.audios;
+}
+
+void MpvProxy::checkAndSetFastProfile()
+{
+    qInfo() << "Entering MpvProxy::checkAndSetFastProfile()";
+
+    // Check if running on AMD 550 series
+    if (!CompositingManager::get().isSpecialControls()) {
+        qInfo() << "Not running on AMD 550 series, skipping profile check";
+        return;
+    }
+
+    // Get video dimensions
+    int width = m_cachedVideoSize.width();
+    int height = m_cachedVideoSize.height();
+
+    // Check for 4K resolution (>= 3840x2160)
+    bool is4K = (width >= 3840 && height >= 2160);
+    if (!is4K) {
+        qInfo() << QString("Video resolution %1x%2 is not 4K, skipping profile check").arg(width).arg(height);
+        return;
+    }
+
+    // Check for 30fps or higher
+    bool is30FpsHigher = (m_cachedFps > 30.0);
+    if (!is30FpsHigher) {
+        qInfo() << QString("Video fps %1 is not > 30fps, skipping profile check").arg(m_cachedFps);
+        return;
+    }
+
+    // All conditions met: AMD 550 series + 4K + 30+fps
+    qInfo() << QString("Detected AMD 550 series + 4K (%1x%2) + %3fps video, setting profile to fast")
+            .arg(width).arg(height).arg(m_cachedFps);
+    my_set_property_async(m_handle, "profile", "fast", 0);
 }
 
 void MpvProxy::nextFrame()
