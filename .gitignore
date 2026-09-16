@@ -59,3 +59,6 @@ AGENTS.md
 .trellis
 .claude
 .agents
+build-linglong
+org.deepin.movie.install
+deps/
