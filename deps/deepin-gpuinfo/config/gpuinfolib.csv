@@ -1,0 +1,91 @@
+#pci_vid_pid,chip_name,device_name,vendor_name,class,sub_vid_pid,driver_name,codec_support,stream_format,图形API/计算API,vo,opengl_renderer,END
+1d17:3a04,ZX-E,C-960 GPU,兆芯,末知,无,zhaoxin,H.264及H.265,H.264/H.265,Open_GL:支持DX11.1、Open_GL_3.2,vaapi,NUL,END
+0014:7a06,Display Controller,龙芯7A1000 DC (Display Controller),龙芯,0x0380,无,loongson-drm,软解,软解,OpenGL_1.5/2.0OpenGL_ES_2.0OpenCL_1.2,NUL,NUL,END
+19e5:XXXX,NUL,麒麟990_5G,华为,末知,无,unknow,NUL,NUL,NUL,NUL,NUL,END
+#末知1,sm768,sm768,SIMO慧荣科技,末知,无,unknow,NUL,1080P_H264/MPEG_Decoder,NA,NUL,NUL,END
+#末知2,NUL,寒武纪,寒武纪,末知,无,unknow,NUL,NUL,NUL,NUL,NUL,END
+1ed5:0101,S10,Moore Threads MIT S10,Moore Threads摩尔线程,0x0000,无,unknow,vaapi,H.264/H.265/VP9,NUL,NUL,NUL,END
+1ed5:0102,S30,Moore Threads MIT S10,Moore Threads摩尔线程,0x0000,无,unknow,vaapi,NUL,NUL,NUL,NUL,END
+1ed5:0105,S50,Moore Threads MIT S10,Moore Threads摩尔线程,0x0000,无,unknow,vaapi,NUL,NUL,NUL,NUL,END
+1ed5:0106,S60,Moore Threads MIT S10,Moore Threads摩尔线程,0x0000,无,unknow,vaapi,NUL,NUL,NUL,NUL,END
+#末知4,NUL,中船重工709,中船重工709,末知,无,unknow,vaapi,NUL,OpenGL_4.5OpenGL_ES_3.0OpenCL_2.0,NUL,NUL,END
+#末知5,NUL,716所,716所,末知,无,unknow,视频解码_支持,视频解码_支持,NUL,NUL,NUL,END
+0731:7200,JM7200,JD7201P-G1100N1GHFX,景嘉微,0x0300,0731:7201,mwv206,vaapi,ffmpeg/264-1K,OpenGL_1.5/OpenGL_ES_不支持/OpenCL_不支持,NUL,NUL,END
+0731:9200,JM9200,景嘉微JM9200,景嘉微,末知,无,mwv206,vaapi,ffmpeg/H256/264/MPEG2和MPEG4/-4K,OpenGL4.0/OpenGLES3.2/OPENCL3.0/Vulkan1.1,NUL,NUL,END
+1ec8:1eb8,风华1号,风华1号,Innosilicon Co Ltd芯动科技,0x0302,1ec8:12a2 ,inno-g1,vaapi,ffmpeg4.3.2/4K@60fps/H.264/H.265 Main/Main10/Main Still Picture,OPENGL 4.25/OPENGL ES 3.2/VULKAN 1.2/OPENCL 1.2 / 2.1EP / 3.0,NUL,NUL,END
+1ec8:9800,Fantasy II,Fantasy II,Innosilicon Co Ltd芯动科技,0x0302,1EC8:9800,inno-drv,vaapi,ffmpeg4.3.2/4K@60fps/H.264/H.265 Main/Main11/Main Still Picture,OPENGL 4.25/OPENGL ES 3.2/VULKAN 1.2/OPENCL 1.2 / 2.1EP / 3.0,NUL,NUL,END
+1ec8:9802,Fantasy II,Fantasy II,Innosilicon Co Ltd芯动科技,0x0302,1ec8:12a2 ,inno-drv,vaapi,ffmpeg4.3.2/4K@60fps/H.264/H.265 Main/Main11/Main Still Picture,OPENGL 4.25/OPENGL ES 3.2/VULKAN 1.2/OPENCL 1.2 / 2.1EP / 3.0,NUL,NUL,END
+1ec8:9804,Fantasy II,Fantasy II,Innosilicon Co Ltd芯动科技,0x0302,1ec8:12a2 ,inno-drv,vaapi,ffmpeg4.3.2/4K@60fps/H.264/H.265 Main/Main11/Main Still Picture,OPENGL 4.25/OPENGL ES 3.2/VULKAN 1.2/OPENCL 1.2 / 2.1EP / 3.0,NUL,NUL,END
+1ec8:9810,Fantasy III,Fantasy III,Innosilicon Co Ltd芯动科技,0x0302,1ec8:12a2 ,inno-drv,vaapi,ffmpeg4.3.2/4K@60fps/H.264/H.265 Main/Main11/Main Still Picture,OPENGL 4.25/OPENGL ES 3.2/VULKAN 1.2/OPENCL 1.2 / 2.1EP / 3.0,NUL,NUL,END
+1002:67ff,Baffin,Radeon RX 550 640SP / RX 560/560X,AMD,末知,无,radeon,vaapi/vdpau,H.264,DirectX_12_(12_0)OpenGL_4.6_OpenCL_2.1Vulkan_1.2Shader_Model_6.4,NUL,NUL,END
+1002:6611,OLAND,Radeon HD 8570 / R5 430 OEM / R7 240/340 / Radeon 520 OEM,AMD,0x0300,1642:1997,radeon,vaapi/vdpau,H.264,DirectX:12_(11_1)_OpenGL:4.6OpenCL:1.2Vulkan:1.2Shader_Model:5.1,NUL,NUL,END
+1002:6779,Caicos,R5_230 / HD7450,AMD,末知,无,radeon,vaapi/vdpau,H.264,DirectX版本_DirectX_11OpenGL_4.4OpenCL_1.2,NUL,NUL,END
+1002:6778,Caicos XT,Radeon HD 7470/8470 / R5 235/310 OEM,AMD,末知,无,radeon,视频解码_支持,视频解码_支持,DirectX_11.2_(11_0)OpenGL:_4.4OpenCL:_1.2Vulkan:NA,NUL,NUL,END
+10de:1b01,GP102,GeForce GTX 1080 Ti 10GB,NVIDIA,,无,nvidia,vdpau/nvdec,不支持编码;解码支持2K;H.264、MPEG2、MPEG4、VC1、AVS、MJPEG、DivX/XviD等,OpenGL_OpenGL_2.0OpenGL_ES_OpenGL_ES_2.0OpenCL_无,NUL,NUL,END
+10de:1d02,GP108,GEFORCE_GT1010,NVIDIA,,无,nvidia,vdpau/nvdec,H.264,OpenGL_4.5CUDA_6.1,NUL,NUL,END
+10de:1d01,GP108,GEFORCE_GT1030,NVIDIA,,无,nvidia,vdpau/nvdec,H.264,OpenGL_4.5CUDA_6.1,NUL,NUL,END
+10de:1c03,GP106,GeForce GTX 1060 6GB,NVIDIA,,无,nvidia,vdpau/nvdec,H.264,OpenGL_4.5CUDA_6.1,NUL,NUL,END
+10de:1d13,GP108M,GeForce MX250,NVIDIA,,无,nouveau,vdpau/nvdec,NUL,NUL,NUL,NUL,END
+10de:1287,GK208B,GeForce GT 730,NVIDIA,0x0300,无,nouveau,vdpau/nvdec,NUL,NUL,NUL,NUL,END
+0014:7a15,Vivante GPU,Loongson Technology LLC,龙芯,0x0400,无,loongson-gpu,NUL,NUL,NUL,NUL,NUL,END
+0709:0202,GP202,GP202,LJMicro,0x0300,0709:0202,ljmcore,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1eed:2100,XDX GPU,XDX GPU,XDX,0x0300,无,xdxgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1eed:15a3,R1900,R1900,XDX,0x0300,无,xdxgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1eed:11e0,XDX130,XDX130 (2/4GB),XDX,0x0300,无,xdxgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1eed:1340,XDX150,XDX150 4GB,XDX,0x0300,无,xdxgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1eed:1330,150S,150S,XDX,0x0300,无,xdxgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1eed:13c0,160A,160A,XDX,0x0300,无,xdxgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1eed:2127,XDX260,XDX260,XDX,0x0300,无,xdxgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1eed:2107,R2900E,R2900E 8GB/16G,XDX,0x0300,无,xdxgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1eed:2105,R2700E,R2700E,XDX,0x0300,无,xdxgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1002:699f,Lexa PRO,Radeon 540/540X/550/550X / RX 540X/550/550X,AMD,0x0300,1eb3:1871,amdgpu,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1d17:3a05,KX-7000,KX-7000 C-1190 GPU,兆芯,0x0300,1d17:3a05,cx4,vaapi,H.264/H.265,NUL,vaapi,NUL,END
+1002:1636,Renoir,Renoir,AMD,0x0300,无,kernel514,vaapi/vdpau,H.264/H.265,NUL,NUL,NUL,END
+8086:9a49,[Iris Xe Graphics],TigerLake-LP GT2,intel,0x0300,无,kernel514,vaapi,H.264/H.265,NUL,NUL,NUL,END
+8086:9b41,CometLake-U GT2,UHD Graphics,intel,末知,无,i915,vaapi,H.264/H.265,NUL,NUL,NUL,END
+1ed5:ffff,more_thread,摩尔线程（默认通配）,摩尔线程,0x0000,无,unknow,vaapi,H.264/H.265,NUL,NUL,NUL,END
+1ed5:0100,S10,Moore Threads MTT S10,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0101,S10,Moore Threads MTT S10,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0102,S30,Moore Threads MTT S30,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0105,S50,Moore Threads MTT S50,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0106,S60,Moore Threads MTT S60,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0111,S100,Moore Threads MTT S100,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0121,S1000M,Moore Threads MTT S1000M,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0122,S1000,Moore Threads MTT S1000,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0123,S2000,Moore Threads MTT S2000,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0200,S80,Moore Threads MTT S80 Engineering Sample,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0201,S80,Moore Threads MTT S80,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0202,S70,Moore Threads MTT S70,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0203,S60,Moore Threads MTT S60,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0211,X300,Moore Threads MTT X300,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0221,G2S80,Moore Threads G2S80,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0222,S3000,Moore Threads MTT S3000,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0223,G2S4,Moore Threads G2S4,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0225,S3000E,Moore Threads MTT S3000E,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0251,G2N10,Moore Threads G2N10,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0300,S90,Moore Threads MTT S90 Engineering Sample,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0301,S90,Moore Threads MTT S90,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0313,X500,Moore Threads MTT X500,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0323,S4000,Moore Threads MTT S4000,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0327,S4000,Moore Threads MTT S4000,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ed5:0328,S4000,Moore Threads MTT S4000,Moore Threads摩尔线程,0x0300,无,unknow,vaapi,H.264/H.265/VP9,NUL,gpu,NUL,END
+1ec8:ffff,Fantasy xxx,Fantasy xxx,Innosilicon Co Ltd芯动科技,0x0302,1ec8:12a2 ,inno-drv,vaapi,ffmpeg4.3.2/4K@60fps/H.264/H.265 Main/Main11/Main Still Picture,OPENGL 4.25/OPENGL ES 3.2/VULKAN 1.2/OPENCL 1.2 / 2.1EP / 3.0,NUL,NUL,END
+1db7:ftg340,FTG340,Phytium FTG340,飞腾,0x0300,无,phytium,vaapi,H.264/H.265,OpenGL_4.6,vaapi,Phytium FTG340,END
+#小写pci_Id,芯片核心代号,市场名称,核心芯片供应商名称,分类,子供应商,内核驱动名,解码框架,解码格式,,#解析格式需要
+#注释,#pci_vid:ffff ,,,,,,,,,,
+#update:,将通配该vid供应商下所有的显卡型号,,,2022,11月09,,,,,
+row_end,row_end,,,,,,,,,,
+#,,<<PCI Code and ID Assignment Specification>>,,,,,,,,
+#,VDP_Decoder_t,C 03 Display controller,,,,,,,,
+#,,00 VGA compatible controller,,,,,,,,
+#,,01 8514 controller,,,,,,,,
+#,,01 XGA compatible controller,,,,,,,,
+#,,02 3D controller,,,,,,,,
+#,,80 Display controller,,,,,,,,
+#,,C 04 Multimedia controller,,,,,,,,
+#,,00 Multimedia video controller,,,,,,,,
+#,,01 Multimedia audio controller,,,,,,,,
+#,,02 Computer telephony device,,,,,,,,
+#,,03 Audio device,,,,,,,,
+#,,80 Multimedia controller,,,,,,,,
+#,,,,,,,,,,

@@ -15,13 +15,10 @@ package:
 base: org.deepin.base/25.2.2
 runtime: org.deepin.runtime.dtk/6.7.0
 
-# deepin-gpuinfo 源码：由 ll-builder 在宿主机 fetch（需打包机已配置 gerrit SSH key）
-# 拉取 develop/snipe 最新分支，解包到沙箱 /project/linglong/sources/deepin-gpuinfo/
-sources:
-  - kind: git
-    url: ssh://gerrit.uniontech.com:29418/deepin-gpuinfo
-    branch: develop/snipe
-    name: deepin-gpuinfo
+# deepin-gpuinfo 源码内嵌于 deps/deepin-gpuinfo（develop/snipe 分支，commit 见其 .source-commit）。
+# 说明：CI 的 ll-builder 1.10.3 不支持无 digest 的 git 源（报 digest missing），
+# 且构建沙箱不挂载宿主 SSH key，无法在 build 阶段拉 gerrit，故采用源码内嵌方式。
+# 刷新源码：在本地 deepin-gpuinfo 克隆上执行 deps/refresh-gpuinfo.sh 后重新提交。
 
 command:
   - deepin-movie
@@ -41,17 +38,13 @@ build: |
   sed -i "s|/usr/include/gstreamer-1.0|$PREFIX/include/gstreamer-1.0|g" src/libdmr/CMakeLists.txt
 
   # ================= 从源码构建 libgpuinfo =================
-  # 优先用 sources 段拉取的 deepin-gpuinfo（ll-builder 在宿主机 fetch，需打包机已配置 gerrit SSH key）
-  # 无 gerrit 凭据的机器：将源码放 deps/deepin-gpuinfo 后用 ll-builder build --skip-fetch-source
-  GPUINFO_SRC=$(find /project/linglong/sources/deepin-gpuinfo -maxdepth 2 -name CMakeLists.txt 2>/dev/null | head -1 | xargs -r dirname)
-  if [ -z "$GPUINFO_SRC" ]; then
-      GPUINFO_SRC=/project/deps/deepin-gpuinfo
-  fi
+  # 使用项目内嵌源码 deps/deepin-gpuinfo（deepin-gpuinfo develop/snipe，无需任何凭据）
+  GPUINFO_SRC=/project/deps/deepin-gpuinfo
   if [ ! -f "$GPUINFO_SRC/CMakeLists.txt" ]; then
-      echo "ERROR: 未找到 deepin-gpuinfo 源码（sources 拉取失败且无 deps/deepin-gpuinfo 本地源码）" >&2
+      echo "ERROR: 未找到 $GPUINFO_SRC 源码目录" >&2
       exit 1
   fi
-  echo ">>> libgpuinfo 源码: $GPUINFO_SRC (commit: $(git -C $GPUINFO_SRC rev-parse --short HEAD 2>/dev/null || cat $GPUINFO_SRC/.source-commit 2>/dev/null || echo unknown))"
+  echo ">>> libgpuinfo 源码: $GPUINFO_SRC (commit: $(cat $GPUINFO_SRC/.source-commit 2>/dev/null || echo unknown))"
   cd /project
   cmake -B /tmp/gpuinfo-build -S "$GPUINFO_SRC" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PREFIX
   cmake --build /tmp/gpuinfo-build --target gpuinfo -j`nproc`

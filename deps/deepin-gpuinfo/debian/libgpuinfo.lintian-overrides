@@ -1,0 +1,2 @@
+#overrides privacy-breach-uses-embedded-file
+libgpuinfo: unstripped-binary-or-object usr/lib/x86_64-linux-gnu/*

@@ -1,0 +1,3 @@
+usr/lib/*/libgpuinfo.so*
+usr/share/deepin-gpuinfo/gpuinfolib.csv
+

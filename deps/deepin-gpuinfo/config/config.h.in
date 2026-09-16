@@ -1,0 +1,14 @@
+#cmakedefine HAVE_GPU_INTEL
+#cmakedefine HAVE_GPU_NVIDIA
+#cmakedefine HAVE_GPU_AMD
+#cmakedefine HAVE_GPU_JJW
+#cmakedefine HAVE_LIBVA
+#cmakedefine HAVE_LIBVDPAU
+
+#ifndef __${CMAKE_SYSTEM_PROCESSOR}__
+    #define __@CMAKE_SYSTEM_PROCESSOR@__
+#endif
+
+
+#define __INSTALL_LIB_PATH__   "@INSTALL_LIB_PATH@"
+

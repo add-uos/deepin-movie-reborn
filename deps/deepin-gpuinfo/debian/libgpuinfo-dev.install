@@ -1,0 +1,3 @@
+usr/lib/*/pkgconfig/libgpuinfo.pc
+usr/include/libgpuinfo/libgpuinfo_decoder.h
+

@@ -1,0 +1,100 @@
+deepin-gpuinfo (0.0.15) unstable; urgency=medium
+
+  * fix(gpuinfo): set Zhaoxin C-960 vo config to vaapi
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 03 Sep 2026 13:35:31 +0800
+
+deepin-gpuinfo (0.0.14) unstable; urgency=medium
+
+  * chore: Update version to 0.0.14
+  * feat(gpu): add moore threads gpu support
+
+ -- zhanghongyuan <zhanghongyuan@uniontech.com>  Thu, 09 Jul 2026 09:07:40 +0800
+
+deepin-gpuinfo (0.0.13) unstable; urgency=medium
+
+  * chore: Update version to 0.0.13
+  * feat(gpuinfo): Add XDX GPU support (8 models)
+  * feat(gpuinfo): add Zhaoxin KX-7000 GPU support
+
+ -- zhanghongyuan <zhanghongyuan@uniontech.com>  Thu, 28 May 2026 17:32:33 +0800
+
+deepin-gpuinfo (0.0.12) unstable; urgency=medium
+
+  * chore: Update version to 0.0.12
+  * refactor(gpuinfo): improve csv file search with multiple fallback paths
+
+ -- zhanghongyuan <zhanghongyuan@uniontech.com>  Wed, 20 May 2026 13:50:26 +0800
+
+deepin-gpuinfo (0.0.11) unstable; urgency=medium
+
+  * feat(gpuinfo): add glxinfo fallback for Phytium FTG340 GPU detection
+  * feat(gpuinfo): add LJMicro GP202 GPU 0709:0202 support
+  * feat(gpuinfo): add XDX GPU 1eed:2100 support
+  * feat(gpuinfo): add vo config support for GPU video output
+  * feat: update the pci ids db for  xingdong 1ec8:9810
+  * feat: yspgpuinfo-v23sit
+
+ -- Wang Yu <wangyu@uniontech.com>  Thu, 09 Apr 2026 21:50:02 +0800
+
+deepin-gpuinfo (0.0.10) unstable; urgency=medium
+
+  * add Moore Threads Innosilicon Cor Ltd support
+
+ -- shuaijie <shuaijie@uniontech.com>  Wed, 09 Nov 2022 16:40:26 +0800
+ 
+deepin-gpuinfo (0.0.9) unstable; urgency=medium
+
+  * add VAAPI dectect support
+
+ -- shuaijie <shuaijie@uniontech.com>  Mon, 11 Oct 2022 10:20:16 +0800
+ 
+deepin-gpuinfo (0.0.8) unstable; urgency=medium
+
+  * add HISI-GPU production KLV,KLU,PGUW,PGUW support
+
+ -- shuaijie <shuaijie@uniontech.com>  Mon, 04 July 2022 14:30:08 +0800
+
+deepin-gpuinfo (0.0.7) unstable; urgency=medium
+
+  * fix bug #143479,ZHAOXIN显卡切换解码自动探测不正确问题
+
+ -- shuaijie <shuaijie@uniontech.com>  Mon, 27 Jun 2022 14:00:06 +0800
+
+deepin-gpuinfo (0.0.6) unstable; urgency=medium
+
+  * fix bug #125199,景嘉微显卡切换解码方式闪退问题
+
+ -- shuaijie <shuaijie@uniontech.com>  Mon, 25 Apr 2022 14:00:06 +0800
+
+deepin-gpuinfo (0.0.5) unstable; urgency=medium
+
+  * fix bug #113670,dev-dri-renderD128文件打开的数量增加，压测影院播放闪退
+
+ -- shuaijie <shuaijie@uniontech.com>  Fri, 02 Mar 2022 16:40:06 +0800
+
+deepin-gpuinfo (0.0.4) unstable; urgency=medium
+
+  * fix bug #111624,影院播放闪退
+  * make X100  work ok
+
+ -- shuaijie <shuaijie@uniontech.com>  Mon, 18 Jan 2022 20:40:06 +0800
+
+deepin-gpuinfo (0.0.3) unstable; urgency=low
+
+  * bind pci info to decoder for vdpau
+  * update the gpulib.ids
+
+ -- shuaijie <shuaijie@uniontech.com>  Mon, 29 Dec 2021 10:44:01 +0800
+
+deepin-gpuinfo (0.0.2) unstable; urgency=low
+
+  * support mips, sw_64,  arch_64.
+
+ -- shuaijie <shuaijie@uniontech.com>  Mon, 13 Dec 2021 16:44:01 +0800
+
+deepin-gpuinfo (0.0.1) unstable; urgency=low
+
+  * Initial release 
+
+ -- shuaijie <shuaijie@uniontech.com>  Fri, 19 Nov 2021 11:21:02 +0800

@@ -1,0 +1,40 @@
+
+
+/**************** Video surface ************/
+VdpBool is_support_queryVideoSurface(xxx enum  y)
+ 
+               ->VideoSurfaceQueryCapabilities(ddd chroma_types[x].id,        &is_supported, &max_width, &max_height);
+->VideoSurfaceQueryGetPutBitsYCbCrCapabilities(ddd chroma_types[x].id, ycbcr_types[y].id,
+
+/***************** Output surface ****************/
+VdpBool is_support_ycbcr_OutputSurface(xxx enum   y)
+
+                ->OutputSurfaceQueryCapabilities(ddd rgb_types[x].id,         &is_supported, &max_width, &max_height);
+->OutputSurfaceQueryGetPutBitsNativeCapabilities(ddd rgb_types[x].id,         &native);   
+    ->OutputSurfaceQueryPutBitsYCbCrCapabilities(ddd rgb_types[x].id, ycbcr_types[y].id,      &is_supported);
+
+VdpBool is_support_indexed_OutputSurface(xxx enum   y)
+                ->OutputSurfaceQueryCapabilities(ddd rgb_types[x].id,                &is_supported, &max_width, &max_height);
+->OutputSurfaceQueryGetPutBitsNativeCapabilities(ddd rgb_types[x].id,                &native);
+  ->OutputSurfaceQueryPutBitsIndexedCapabilities(ddd,rgb_types[x].id, indexed_types[y].id,   VDP_COLOR_TABLE_FORMAT_B8G8R8X8, &is_supported);
+
+/***************** Bitmap surface ****************/
+VdpBool is_support_queryBitmapSurface(xxx)
+->BitmapSurfaceQueryCapabilities(ddd rgb_types[x].id,          &is_supported, &max_width, &max_height);
+
+/******************* Video mixer ****************/
+
+VdpBool is_support_queryVideoMixer_Feature(xxx)
+->VideoMixerQueryFeatureSupport(ddd mixer_features[x].id,              &is_supported);
+
+VdpBool is_support_queryVideoMixer_Parameter(xxx)
+->VideoMixerQueryParameterSupport(ddd mixer_parameters[x].id,              &is_supported);
+->VideoMixerQueryParameterValueRange(ddd mixer_parameters[x].id,        (void *)&minval, (void *)&maxval);
+
+VdpBool is_support_queryVideoMixer_AttributeValueRange(xxx)
+->VideoMixerQueryAttributeSupport(ddd mixer_attributes[x].id,               &is_supported);
+->VideoMixerQueryAttributeValueRange(ddd mixer_parameters[x].id,          (void *)&minval, (void *)&maxval);
+
+/******************* Decoder ****************/
+VdpBool is_support_queryDecoderCaps(xxx)
+->DecoderQueryCapabilities(ddd decoder_2profiles[x].id,         &is_supported, &max_level, &max_macroblocks, &max_width, &max_height);

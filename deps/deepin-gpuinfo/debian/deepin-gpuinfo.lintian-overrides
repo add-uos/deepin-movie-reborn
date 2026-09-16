@@ -1,0 +1,2 @@
+#overrides privacy-breach-uses-embedded-file
+deepin-gpuinfo: unstripped-binary-or-object usr/bin/deepin-gpuinfo
