@@ -15,10 +15,13 @@ package:
 base: org.deepin.base/25.2.2
 runtime: org.deepin.runtime.dtk/6.7.0
 
-# deepin-gpuinfo 源码内嵌于 deps/deepin-gpuinfo（develop/snipe 分支，commit 见其 .source-commit）。
-# 说明：CI 的 ll-builder 1.10.3 不支持无 digest 的 git 源（报 digest missing），
-# 且构建沙箱不挂载宿主 SSH key，无法在 build 阶段拉 gerrit，故采用源码内嵌方式。
-# 刷新源码：在本地 deepin-gpuinfo 克隆上执行 deps/refresh-gpuinfo.sh 后重新提交。
+# deepin-gpuinfo 源码：官方 sources 方式引入（git + commit 固定版本，构建可复现）
+# 拉取 gerrit develop/snipe 分支的 7ff6f93，需执行构建的机器可访问 gerrit（已配 SSH key）
+sources:
+  - kind: git
+    url:  https://gerrit.uniontech.com/deepin-gpuinfo
+    commit: faafe34cdc9428f1979344bb8c07f38e6683cc2b
+    name: deepin-gpuinfo
 
 command:
   - deepin-movie
@@ -38,13 +41,19 @@ build: |
   sed -i "s|/usr/include/gstreamer-1.0|$PREFIX/include/gstreamer-1.0|g" src/libdmr/CMakeLists.txt
 
   # ================= 从源码构建 libgpuinfo =================
-  # 使用项目内嵌源码 deps/deepin-gpuinfo（deepin-gpuinfo develop/snipe，无需任何凭据）
-  GPUINFO_SRC=/project/deps/deepin-gpuinfo
+  # 源码来自上方 sources 段（官方方式：git + commit 固定 7ff6f93）
+  GPUINFO_SRC=""
+  for d in /project/linglong/sources/deepin-gpuinfo /project/sources/deepin-gpuinfo /source/deepin-gpuinfo; do
+      if [ -f "$d/CMakeLists.txt" ]; then GPUINFO_SRC="$d"; break; fi
+  done
+  if [ -z "$GPUINFO_SRC" ]; then
+      GPUINFO_SRC=$(find /project -maxdepth 4 -path "*deepin-gpuinfo*/CMakeLists.txt" 2>/dev/null | head -1 | xargs -r dirname)
+  fi
   if [ ! -f "$GPUINFO_SRC/CMakeLists.txt" ]; then
-      echo "ERROR: 未找到 $GPUINFO_SRC 源码目录" >&2
+      echo "ERROR: 未找到 deepin-gpuinfo 源码，sources 拉取失败？检查构建机 gerrit 访问权限" >&2
       exit 1
   fi
-  echo ">>> libgpuinfo 源码: $GPUINFO_SRC (commit: $(cat $GPUINFO_SRC/.source-commit 2>/dev/null || echo unknown))"
+  echo ">>> libgpuinfo 源码: $GPUINFO_SRC (commit: $(git -C $GPUINFO_SRC rev-parse --short HEAD 2>/dev/null || echo unknown))"
   cd /project
   cmake -B /tmp/gpuinfo-build -S "$GPUINFO_SRC" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PREFIX
   cmake --build /tmp/gpuinfo-build --target gpuinfo -j`nproc`

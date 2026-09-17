@@ -1,8 +1,0 @@
-What is in the pipeline:
-
-
-- Add nouveau driver support if possible.
-
-- Add double GPU device for vdpau and va ,the bug  in libva and vdpau 2021 11 11.
-
-- Add gpuinfo -q , -l  2021 11 11.
