@@ -16,8 +16,9 @@
 //     (dcc_* icons only exist as DCI resources, invisible to a bare
 //     QGuiApplication)
 //   * eventFilter return values called directly on the button (disabled
-//     press -> false + sigUnsupported, disabled non-press -> false, enabled
-//     press -> false — every branch returns false)
+//     press -> true + sigUnsupported — the press is consumed, per the fix
+//     for DEF-T14-03; disabled non-press -> true as well — the whole
+//     disabled branch consumes mouse events; enabled press -> false)
 //   * wheelEvent ignored branch (modifier / buttons held) and the
 //     angleDelta().y() == 0 else-branch (requestVolumeDown)
 //   * setButtonEnable(false) icon + re-enable icon restoration
@@ -208,14 +209,15 @@ TEST(toolbutton_t14, eventFilterDisabledButtonNonPressEventSilent)
     fx.button.setButtonEnable(false);
     QSignalSpy unsupported(&fx.button, &VolumeButton::sigUnsupported);
 
-    // a disabled button receiving a RELEASE must stay silent (only press
-    // signals unsupported); called directly to observe the filter verdict
+    // a disabled button receiving a RELEASE stays silent (only press signals
+    // unsupported) but the event is still consumed — the whole disabled
+    // branch returns true since the eventFilter contract fix
     QMouseEvent release(QEvent::MouseButtonRelease, QPointF(5, 5),
                         QPointF(5, 5), Qt::LeftButton, Qt::NoButton,
                         Qt::NoModifier);
     const bool handled = fx.button.eventFilter(&fx.button, &release);
 
-    EXPECT_FALSE(handled);
+    EXPECT_TRUE(handled);
     EXPECT_EQ(unsupported.count(), 0);
 }
 
@@ -229,8 +231,9 @@ TEST(toolbutton_t14, eventFilterDisabledButtonPressEventSignalsUnsupported)
                       Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     const bool handled = fx.button.eventFilter(&fx.button, &press);
 
-    // emits sigUnsupported AND still returns false (letting the event through)
-    EXPECT_FALSE(handled);
+    // emits sigUnsupported AND consumes the press (returns true, keeping the
+    // event from propagating further — eventFilter contract consistency fix)
+    EXPECT_TRUE(handled);
     EXPECT_EQ(unsupported.count(), 1);
 }
 

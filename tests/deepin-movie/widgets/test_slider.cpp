@@ -258,13 +258,13 @@ TEST(slider_t14, MouseMoveWhileDraggingUpdatesIndicator)
     EXPECT_TRUE(fx.slider.m_bDown);
 
     // while m_bDown the move path only refreshes the indicator position.
-    // NOTE: slider.cpp redefines TOOLBOX_TOP_EXTENT to 12 (the shared header
-    // says 0), so the indicator y offset inside slider.cpp is 12 - 4 = 8.
+    // TOOLBOX_TOP_EXTENT is 0 (slider.cpp now matches toolbox_proxy.h), so
+    // the indicator y offset inside slider.cpp is 0 - 4 = -4.
     QMouseEvent move(QEvent::MouseMove, QPointF(150, 10), QPointF(150, 10),
                      Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QApplication::sendEvent(&fx.slider, &move);
     EXPECT_EQ(fx.slider.m_indicatorPos,
-              QPoint(150, fx.slider.pos().y() + 12 - 4));
+              QPoint(150, fx.slider.pos().y() - 4));
 
     // no move events leak to the hover path while dragging
     QSignalSpy enterSpy(&fx.slider, &DMRSlider::enter);
@@ -305,10 +305,10 @@ TEST(slider_t14, LeaveEventResetsIndicatorAndEmitsLeave)
     QEvent leave(QEvent::Leave);
     QApplication::sendEvent(&fx.slider, &leave);
 
-    // leaveEvent clears the indicator state (the "Hover" dynamic property is
-    // never reset anywhere in slider.cpp — an observation for the defect
-    // export) and emits leave()
+    // leaveEvent clears the indicator state, resets the "Hover" dynamic
+    // property (m_bIndicatorEnabled only) and emits leave()
     EXPECT_FALSE(fx.slider.m_bShowIndicator);
+    EXPECT_EQ(fx.slider.property("Hover"), "false");
     EXPECT_EQ(leaveSpy.count(), 1);
 }
 
